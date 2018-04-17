@@ -227,14 +227,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 for (LinkedHashMap.Entry<String, PSIDataResponse> mPSIDataResponse : mPSIdataAtThatTime.entrySet()) {
                     PSIDataResponse mreadPSIDataResponse = mPSIDataResponse.getValue();
                     mArrayList.add(mPSIDataResponse.getKey());
-                    Readings getmReading = mreadPSIDataResponse.getmItems().get(0).getmReading();
-                    PsiTwentyFourHourly mPsiTwentyFourHourly= getmReading.getgPsiTwentyFourHourly();
                     String date = MainController.getDateTimeInSGT();
-
                     /*
-                    * Setting here only the current date of PSI data
+                    * Setting here only the current date and time of PSI data
                     * **/
                     if(mPSIDataResponse.getKey().equalsIgnoreCase(MainController.getHrMinute(date))) {
+                        Readings getmReading = mreadPSIDataResponse.getmItems().get(0).getmReading();
+                        PsiTwentyFourHourly mPsiTwentyFourHourly= getmReading.getgPsiTwentyFourHourly();
                         List<RegionMetadata> mRegionMetadata = mPSIDataResponse.getValue().getmRegionMetadata();
                         createMarker(mRegionMetadata, mPsiTwentyFourHourly);
                     }
