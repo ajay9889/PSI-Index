@@ -85,28 +85,35 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     public void RequestPSIData(){
-        TextView date_txt = (TextView) findViewById(R.id.date);
-        TextView navigate = (TextView) findViewById(R.id.navigate);
-        LinearLayout linearLayout =(LinearLayout) findViewById(R.id.line_tables_data);
-        navigate.setTypeface(MainController.fontawesome(MapsActivity.this));
-        if(!MainController.isNetworkAvailable(MapsActivity.this)){
-            date_txt.setText(getResources().getString(R.string.network_error));
-            navigate.setVisibility(View.INVISIBLE);
-            linearLayout.setVisibility(View.GONE);
-            return;
-        }
-        navigate.setVisibility(View.VISIBLE);
-        linearLayout.setVisibility(View.VISIBLE);
-        date_txt.setText(getResources().getString(R.string.please_wait));
-        String date = MainController.getDateTimeInSGT();
-        for (int i = 0 ; i<5; i++) {
-            String previous_days_hours = MainController.getAddedDate(i);
-            if (MainController.getDate(date).equalsIgnoreCase(MainController.getDate(previous_days_hours))){
-                NEARestAPI(previous_days_hours, MainController.getDate(previous_days_hours));
-            }else{
-                break;
+        try {
+            TextView date_txt = (TextView) findViewById(R.id.date);
+            TextView navigate = (TextView) findViewById(R.id.navigate);
+            LinearLayout linearLayout = (LinearLayout) findViewById(R.id.line_tables_data);
+            navigate.setTypeface(MainController.fontawesome(MapsActivity.this));
+            if (!MainController.isNetworkAvailable(MapsActivity.this)) {
+                date_txt.setText(getResources().getString(R.string.network_error));
+                navigate.setVisibility(View.INVISIBLE);
+                linearLayout.setVisibility(View.GONE);
+                return;
             }
-        }
+            navigate.setVisibility(View.VISIBLE);
+            linearLayout.setVisibility(View.VISIBLE);
+            date_txt.setText(getResources().getString(R.string.please_wait));
+            String date = MainController.getDateTimeInSGT();
+            /*
+             * Modified by ajay, previously was not clearing
+             * */
+            if(mMapPSIDataResponse!=null)
+            mMapPSIDataResponse.clear();
+            for (int i = 0; i < 5; i++) {
+                String previous_days_hours = MainController.getAddedDate(i);
+                if (MainController.getDate(date).equalsIgnoreCase(MainController.getDate(previous_days_hours))) {
+                    NEARestAPI(previous_days_hours, MainController.getDate(previous_days_hours));
+                } else {
+                    break;
+                }
+            }
+        }catch(Exception e){e.printStackTrace();}
     }
 
     /*
@@ -173,11 +180,16 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
-        if(servicePendingIntent!=null && am!=null )
-        am.cancel(servicePendingIntent);
-
-        unregisterReceiver(mBroadcast);
+        try{
+            if(servicePendingIntent!=null && am!=null )
+            am.cancel(servicePendingIntent);
+            if(mBroadcast!=null)
+            unregisterReceiver(mBroadcast);
+            if(mMapPSIDataResponse!=null)
+            mMapPSIDataResponse.clear();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     /**
      * Manipulates the map once available.
@@ -196,6 +208,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
     PSIStatistic mPSiStaticsAdapter=null;
     private void setPinOnMap(){
+        try{
         if(mMap!=null && mMapPSIDataResponse!=null){
             mMap.clear();
             mMap.getUiSettings().setCompassEnabled(true);
@@ -237,10 +250,12 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                  mRecyclerView.setAdapter(mPSiStaticsAdapter);
             }
         }
+        }catch(Exception e){e.printStackTrace();}
     }
 
 
     public void createMarker(List<RegionMetadata> mRegionMetadata,PsiTwentyFourHourly mPsiTwentyFourHourly){
+        try{
         for(int i =0 ; i<mRegionMetadata.size() ; i++){
             LatLng PSI_location = new LatLng(mRegionMetadata.get(i).getmLocation().getLatitude(), mRegionMetadata.get(i).getmLocation().getLongitude());
             String label_on_pin="";
@@ -274,6 +289,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 mMap.animateCamera(cameraUpdate);
             }
         }
+        }catch(Exception e){e.printStackTrace();}
     }
 
     public boolean userLocation(){
