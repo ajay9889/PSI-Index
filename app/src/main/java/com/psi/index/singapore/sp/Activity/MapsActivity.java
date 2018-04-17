@@ -36,6 +36,7 @@ import com.psi.index.singapore.sp.NetworkCall.PSIRestAPI;
 import com.psi.index.singapore.sp.R;
 import com.psi.index.singapore.sp.Utils.MainController;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import retrofit2.Call;
@@ -232,6 +233,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     List<RegionMetadata> mRegionMetadata = mPSIDataResponse.getValue().getmRegionMetadata();
                     createMarker(mRegionMetadata , mPsiTwentyFourHourly);
                 }
+                Collections.sort(mArrayList);
+                Collections.reverse(mArrayList);
                 TextView date = (TextView) findViewById(R.id.date);
                 TextView navigate = (TextView) findViewById(R.id.navigate);
                 date.setText(entry.getKey());

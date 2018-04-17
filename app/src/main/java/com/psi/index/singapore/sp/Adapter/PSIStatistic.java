@@ -60,7 +60,7 @@ public class PSIStatistic extends RecyclerView.Adapter<RecyclerViewHolder> {
                 mainHolder.central.setText("" + mPSIDataResponse.getmItems().get(0).getmReading().getgPsiTwentyFourHourly().getCentral());
                 mainHolder.north.setText("" + mPSIDataResponse.getmItems().get(0).getmReading().getgPsiTwentyFourHourly().getNorth());
                 mainHolder.south.setText("" + mPSIDataResponse.getmItems().get(0).getmReading().getgPsiTwentyFourHourly().getSouth());
-                mainHolder.time.setText(key.replace(" ",":00"));
+                mainHolder.time.setText(key.replace(" ","")+":00");
                 String date = MainController.getDateTimeInSGT();
                 if(key.equalsIgnoreCase(MainController.getHrMinute(date))){
                     mainHolder.line_items.setBackgroundColor(context.getResources().getColor(R.color.background));

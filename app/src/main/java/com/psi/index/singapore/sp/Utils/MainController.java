@@ -88,7 +88,7 @@ public class MainController {
          final Date dates = sdf_sgt.parse(date_time);
             SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT_WITH_AM_PM, Locale.ENGLISH);
             String strDate = sdf.format(dates);
-            String time= strDate.split("T") [1].trim();
+            String time= strDate.split("T") [1].trim().split(" ")[0].trim();
             return time;
         } catch (Exception ex) {
             ex.printStackTrace();
