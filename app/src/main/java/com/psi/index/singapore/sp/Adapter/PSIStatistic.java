@@ -57,7 +57,7 @@ public class PSIStatistic extends RecyclerView.Adapter<RecyclerViewHolder> {
             if(mPSIDataResponse!=null) {
                 mainHolder.east.setText("" + mPSIDataResponse.getmItems().get(0).getmReading().getgPsiTwentyFourHourly().getEast());
                 mainHolder.west.setText("" + mPSIDataResponse.getmItems().get(0).getmReading().getgPsiTwentyFourHourly().getWest());
-                mainHolder.center.setText("" + mPSIDataResponse.getmItems().get(0).getmReading().getgPsiTwentyFourHourly().getCentral());
+                mainHolder.central.setText("" + mPSIDataResponse.getmItems().get(0).getmReading().getgPsiTwentyFourHourly().getCentral());
                 mainHolder.north.setText("" + mPSIDataResponse.getmItems().get(0).getmReading().getgPsiTwentyFourHourly().getNorth());
                 mainHolder.south.setText("" + mPSIDataResponse.getmItems().get(0).getmReading().getgPsiTwentyFourHourly().getSouth());
                 mainHolder.time.setText(key.replace(" ",":00"));

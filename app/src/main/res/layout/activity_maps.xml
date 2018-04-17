@@ -125,7 +125,7 @@
                 android:layout_weight="0.17"
                 android:focusableInTouchMode="true"
                 android:gravity="center"
-                android:text="East"
+                android:text="| East"
                 android:textColor="#000000"
                 android:textSize="15sp"
                 android:textStyle="bold" />
@@ -135,7 +135,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.17"
                 android:gravity="center"
-                android:text=" | West"
+                android:text="| West"
                 android:textColor="#000000"
                 android:textSize="15sp"
                 android:textStyle="bold" />
@@ -145,7 +145,7 @@
                 android:layout_weight="0.17"
                 android:focusableInTouchMode="true"
                 android:gravity="center"
-                android:text=" | Center"
+                android:text="| Central"
                 android:textColor="#000000"
                 android:textSize="15sp"
                 android:textStyle="bold" />
@@ -155,7 +155,7 @@
                 android:layout_weight="0.17"
                 android:focusableInTouchMode="true"
                 android:gravity="center"
-                android:text=" | North"
+                android:text="| North"
                 android:textColor="#000000"
                 android:textSize="15sp"
                 android:textStyle="bold" />
@@ -165,7 +165,7 @@
                 android:layout_weight="0.17"
                 android:focusableInTouchMode="true"
                 android:gravity="center"
-                android:text=" | South"
+                android:text="| South"
                 android:textColor="#000000"
                 android:textSize="15sp"
                 android:textStyle="bold" />

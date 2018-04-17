@@ -8,13 +8,13 @@ import android.widget.TextView;
 import com.psi.index.singapore.sp.R;
 
 public class RecyclerViewHolder extends RecyclerView.ViewHolder {
-    public TextView north,south,center, east,west,time,navigate;
+    public TextView north,south,central, east,west,time,navigate;
     LinearLayout line_items;
     public RecyclerViewHolder(View view) {
         super(view);
         this.north = (TextView) view.findViewById(R.id.north);
         this.south = (TextView) view.findViewById(R.id.south);
-        this.center = (TextView) view.findViewById(R.id.center);
+        this.central = (TextView) view.findViewById(R.id.central);
         this.east = (TextView) view.findViewById(R.id.east);
         this.west = (TextView) view.findViewById(R.id.west);
         this.time = (TextView) view.findViewById(R.id.time);

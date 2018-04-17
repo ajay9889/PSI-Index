@@ -57,13 +57,13 @@
             android:textSize="12sp"
      />
         <TextView
-            android:id="@+id/center"
+            android:id="@+id/central"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.17"
             android:focusableInTouchMode="true"
             android:gravity="center"
-            android:text=" | Center"
+            android:text=" | Central"
             android:textColor="@color/colorPrimary"
             android:textSize="12sp"
             android:textStyle="bold"
