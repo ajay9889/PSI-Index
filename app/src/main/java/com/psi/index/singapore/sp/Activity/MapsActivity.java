@@ -223,15 +223,21 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             ArrayList<String> mArrayList = new ArrayList<String>();
 
             for (LinkedHashMap.Entry<String ,LinkedHashMap<String, PSIDataResponse>> entry : mMapPSIDataResponse.entrySet()) {
-
                 LinkedHashMap<String, PSIDataResponse> mPSIdataAtThatTime= entry.getValue();
                 for (LinkedHashMap.Entry<String, PSIDataResponse> mPSIDataResponse : mPSIdataAtThatTime.entrySet()) {
                     PSIDataResponse mreadPSIDataResponse = mPSIDataResponse.getValue();
                     mArrayList.add(mPSIDataResponse.getKey());
                     Readings getmReading = mreadPSIDataResponse.getmItems().get(0).getmReading();
                     PsiTwentyFourHourly mPsiTwentyFourHourly= getmReading.getgPsiTwentyFourHourly();
-                    List<RegionMetadata> mRegionMetadata = mPSIDataResponse.getValue().getmRegionMetadata();
-                    createMarker(mRegionMetadata , mPsiTwentyFourHourly);
+                    String date = MainController.getDateTimeInSGT();
+
+                    /*
+                    * Setting here only the current date of PSI data
+                    * **/
+                    if(mPSIDataResponse.getKey().equalsIgnoreCase(MainController.getHrMinute(date))) {
+                        List<RegionMetadata> mRegionMetadata = mPSIDataResponse.getValue().getmRegionMetadata();
+                        createMarker(mRegionMetadata, mPsiTwentyFourHourly);
+                    }
                 }
                 Collections.sort(mArrayList);
                 Collections.reverse(mArrayList);
