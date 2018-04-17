@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">PSI Singapore</string>
+    <string name="title_activity_maps">PSI Singapore</string>
+    <string name="refresh">&#xf021;</string>
+    <string name="navigation">&#xf124;</string>
+
+    <string name="please_wait">Please wait...</string>
+    <string name="network_error">Network Connection Error!</string>
+
+
+</resources>
